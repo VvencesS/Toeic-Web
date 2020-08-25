@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,7 @@
 	  <div class="container">
 	    <div class="row">
 	            <!--LOGO-->
-	            <div class="span3"><a class="brand" href="#"><img src="Template/Front-end/img/logo.png"/></a></div>
+	            <div class="span3"><a class="brand" href="HomeForward"><img src="Template/Front-end/img/logo.png"/></a></div>
 	            <!-- /LOGO -->
 	
 	          <!-- MAIN NAVIGATION -->  
@@ -46,21 +48,9 @@
 	                  <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
 	                  <div class="nav-collapse collapse navbar-responsive-collapse">
 	                  <ul class="nav">
-	                      <li class="active"><a href="index.html">Home</a></li>
 	                      
-	                      <li class="dropdown">
-	                        <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-	                          <ul class="dropdown-menu">
-	                                <li><a href="about.html">Company</a></li>
-	                                <li><a href="about.html">History</a></li>
-	                                <li><a href="about.html">Team</a></li>
-	                          </ul>
-	
-	                      </li>
-	
-	                      <li><a href="service.html">Services</a></li>
-	                      <li><a href="blog.html">Blog</a></li>
-	                      <li><a href="contact.html">Contact</a></li>
+	                      <li><a href="#">Đăng nhập</a></li>
+	                      <li><a href="#">Đăng ký</a></li>
 	               
 	                  </ul>
 	                </div>
@@ -92,14 +82,16 @@
 	            <div class="span6">
 	
 	              <div class="carousel-caption">
-	                    <h1>Example headline</h1>
-	                    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-	                    <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+	                    <h2>Hướng Dẫn Phần Nghe, Đọc TOEIC </h2>
+	                    <p class="lead">
+		                    Chúng tôi cung cấp cho các bạn các kiếm thức tốt nhất
+	                    </p>
+	                    <a class="btn btn-large btn-primary" href="#">Hãy tham gia ngay!</a>
 	              </div>
 	
 	            </div>
 	
-	              <div class="span6"> <img src="Template/Front-end/img/slide/slide1.jpg"></div>
+	              <div class="span6"> <img src="Template/Front-end/img/slide/slide1.jpg" height="350px" width="350px"></div>
 	
 	        </div>
 	      </div>
@@ -109,27 +101,22 @@
 	
 	    </div>
 	
-	    <div class="item">
-	     
+	    <c:forEach items="${slideBannerList}" var="list">
+	    	<div class="item">
 	      <div class="container">
 	        <div class="row">
-	          
 	            <div class="span6">
-	
 	              <div class="carousel-caption">
-	                    <h1>Example headline</h1>
-	                    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-	                    <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+	                    <h2>${list.slidename}</h2>
+	                    <p class="lead">${list.slidecontent}</p>
+	                    <a class="btn btn-large btn-primary" href="#">Hãy tham gia ngay!</a>
 	              </div>
-	
 	            </div>
-	
-	              <div class="span6"> <img src="Template/Front-end/img/slide/slide2.jpg"></div>
-	
+	              <div class="span6"> <img src="Template/Front-end/img/slide/${list.slideimage}" height="350px" width="350px"></div>
 	        </div>
 	      </div>
-	
 	    </div>
+	    </c:forEach>
 	
 	
 	

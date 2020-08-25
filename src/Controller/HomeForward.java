@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import BEAN.SlideBanner;
+import DAO.HomeDAO;
+import DB.DBConnection;
+
+import java.sql.*;
+import java.util.*;
+
 @WebServlet("/HomeForward")
 public class HomeForward extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +26,13 @@ public class HomeForward extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Connection conn = DBConnection.CreateConnection();
+		if(conn == null) System.out.print("null");
+		else System.out.print("null");
+		List<SlideBanner> list = HomeDAO.DisplaySlideBanner(conn);
+		System.out.print("size: " + list.size());
+		request.setAttribute("slideBannerList", list);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("View/Home.jsp");
 		rd.forward(request, response);
 	}
